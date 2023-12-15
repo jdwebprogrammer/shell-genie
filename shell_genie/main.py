@@ -16,24 +16,8 @@ app = typer.Typer()
 
 @app.command()
 def init():
-
-    backend = Prompt.ask(
-        "Select backend:", choices=["openai-gpt-3.5-turbo", "free-genie"]
-    )
     additional_params = {}
 
-    if backend == "openai-gpt-3.5-turbo":
-        additional_params["openai_api_key"] = Prompt.ask("Enter a OpenAI API key")
-
-    if backend == "free-genie":
-        print(
-            "[yellow]Note that this server will store the requested command, OS, and shell version to improve the model. Also, I cannot guarantee that the server will be up and running 24/7.[/yellow]"
-        )
-        if not Confirm.ask("Do you want to continue?"):
-            return
-        additional_params["training-feedback"] = Confirm.ask(
-            "Do you want to provide feedback about the generated commands to improve the models?"
-        )
     os_family, os_fullname = get_os_info()
 
     if os_family:
