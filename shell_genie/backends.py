@@ -32,11 +32,10 @@ class BaseGenie:
         pass
 
 
-class OpenAIGenie(BaseGenie):
-    def __init__(self, api_key: str, os_fullname: str, shell: str):
+class TrueOpenGenie(BaseGenie):
+    def __init__(self, os_fullname: str, shell: str):
         self.os_fullname = os_fullname
         self.shell = shell
-        openai.api_key = api_key
 
     def _build_prompt(self, wish: str, explain: bool = False):
         explain_text = ""
