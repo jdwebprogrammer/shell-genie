@@ -1,5 +1,5 @@
 import platform
-from .backends import OpenAIGenie, FreeTrialGenie
+from .backends import OpenAIGenie
 
 
 def get_os_info():
@@ -17,11 +17,6 @@ def get_backend(**config: dict):
     if backend_name == "openai-gpt-3.5-turbo":
         return OpenAIGenie(
             api_key=config["openai_api_key"],
-            os_fullname=config["os_fullname"],
-            shell=config["shell"],
-        )
-    elif backend_name == "free-genie":
-        return FreeTrialGenie(
             os_fullname=config["os_fullname"],
             shell=config["shell"],
         )
