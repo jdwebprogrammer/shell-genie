@@ -14,11 +14,6 @@ def get_os_info():
 
 def get_backend(**config: dict):
     backend_name = config["backend"]
-    if backend_name == "openai-gpt-3.5-turbo":
-        return OpenAIGenie(
-            api_key=config["openai_api_key"],
-            os_fullname=config["os_fullname"],
-            shell=config["shell"],
-        )
+    return TrueOpenGenie(os_fullname=config["os_fullname"],shell=config["shell"])
     else:
         raise ValueError(f"Unknown backend: {backend_name}")
