@@ -15,5 +15,3 @@ def get_os_info():
 def get_backend(**config: dict):
     backend_name = config["backend"]
     return TrueOpenGenie(os_fullname=config["os_fullname"],shell=config["shell"])
-    else:
-        raise ValueError(f"Unknown backend: {backend_name}")
